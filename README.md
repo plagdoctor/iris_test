@@ -1,2 +1,2 @@
-# irist_test
+# iris_test
 Go web Framework iris test
