@@ -1,51 +1,46 @@
 package main
 
 import (
-	"encoding/json"
-	"io/ioutil"
-
 	"github.com/kataras/iris/v12"
 )
 
-
 func main() {
-	/* 
-	app := iris.New()
+	/*
+		app := iris.New()
 
-	booksAPI := app.Party("/books")
-	{
-		booksAPI.Use(iris.Compression)
+		booksAPI := app.Party("/books")
+		{
+			booksAPI.Use(iris.Compression)
 
-		// GET: http://localhost:8080/books
-		booksAPI.Get("/", list)
-		// POST: http://localhost:8080/books
-		booksAPI.Post("/", create)
-	}
+			// GET: http://localhost:8080/books
+			booksAPI.Get("/", list)
+			// POST: http://localhost:8080/books
+			booksAPI.Post("/", create)
+		}
 	*/
 
-    app := iris.Default()
+	app := iris.Default()
 
-    // This handler will match /user/john but will not match /user/ or /user
-    app.Get("/user/{name}", func(ctx iris.Context) {
-        name := ctx.Params().Get("name")
-        ctx.Writef("Hello %s", name)
-    })
+	// This handler will match /user/john but will not match /user/ or /user
+	app.Get("/user/{name}", func(ctx iris.Context) {
+		name := ctx.Params().Get("name")
+		ctx.Writef("Hello %s", name)
+	})
 
-    // However, this one will match /user/john/ and also /user/john/send
-    // If no other routers match /user/john, it will redirect to /user/john/
-    app.Get("/user/{name}/{action:path}", func(ctx iris.Context) {
-        name := ctx.Params().Get("name")
-        action := ctx.Params().Get("action")
-        message := name + " is " + action
-        ctx.WriteString(message)
-    })
+	// However, this one will match /user/john/ and also /user/john/send
+	// If no other routers match /user/john, it will redirect to /user/john/
+	app.Get("/user/{name}/{action:path}", func(ctx iris.Context) {
+		name := ctx.Params().Get("name")
+		action := ctx.Params().Get("action")
+		message := name + " is " + action
+		ctx.WriteString(message)
+	})
 	// custom
-    app.Get("/welcome", custom_welcome)
+	app.Get("/welcome", custom_welcome)
 	app.Post("/form_post", custom_form_post)
 	app.Post("/get_json", custom_get_json)
-	
 
-    app.Listen(":8080")
+	app.Listen(":8080")
 }
 
 // Book example.
@@ -57,23 +52,26 @@ type Person struct {
 	Age  int    `json:"age"`
 }
 
-func custom_get_json(ctx iris.Context)  {
-	
-	var person Person
-	rawBodyAsBytes, err := ioutil.ReadAll(ctx.Request().Body)
-	if err != nil { /* handle the error */ ctx.Writef("%v", err) }
-	_ = json.Unmarshal(rawBodyAsBytes, &person)
-	
-	println(person.Age,person.Name) 
+func custom_get_json(ctx iris.Context) {
+
 	/*
-	err := ctx.ReadJSON(&persons)
+		var person Person
+		rawBodyAsBytes, err := ioutil.ReadAll(ctx.Request().Body)
+		if err != nil { ctx.Writef("%v", err) }
+		_ = json.Unmarshal(rawBodyAsBytes, &person)
+
+		println(person.Age,person.Name)
+	*/
+
+	var person Person
+	err := ctx.ReadJSON(&person)
 	if err != nil {
 		ctx.StopWithError(iris.StatusBadRequest, err)
 		return
 	}
 
-	ctx.Writef("Received: %#+v\n", persons)	
-	*/
+	ctx.Writef("Received: %#+v\n", person)
+
 }
 
 func custom_form_post(ctx iris.Context) {
@@ -87,14 +85,14 @@ func custom_form_post(ctx iris.Context) {
 	})
 }
 
-func custom_welcome(ctx iris.Context)  {
-	
-        firstname := ctx.URLParamDefault("firstname", "Guest")
-        //lastname := ctx.URLParam("lastname") 
-		// shortcut for ctx.Request().URL.Query().Get("lastname")
-		lastname := ctx.Request().URL.Query().Get("lastname")
-        ctx.Writef("Hello %s %s", firstname, lastname)
-    
+func custom_welcome(ctx iris.Context) {
+
+	firstname := ctx.URLParamDefault("firstname", "Guest")
+	//lastname := ctx.URLParam("lastname")
+	// shortcut for ctx.Request().URL.Query().Get("lastname")
+	lastname := ctx.Request().URL.Query().Get("lastname")
+	ctx.Writef("Hello %s %s", firstname, lastname)
+
 }
 
 func list(ctx iris.Context) {
