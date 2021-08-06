@@ -1,0 +1,34 @@
+2021-08-06 10:42:21|0s|404|GET|/user|::1|name=jinyoung|0 B|9 B||
+2021-08-06 10:42:39|279.8µs|200|GET|/user/name=jinyoung|::1|name=name=jinyoung|0 B|19 B||
+2021-08-06 10:42:57|0s|200|GET|/user/name|::1|name=name action=yup|0 B|10 B||
+2021-08-06 10:43:20|786.7µs|200|GET|/user/name/action|::1|name=name action=action|0 B|14 B||
+2021-08-06 10:43:51|0s|200|GET|/user/name/action/sdfef|::1|name=name action=action/sdfef|0 B|20 B||
+2021-08-06 10:43:58|0s|200|GET|/user/name/action/sdfef_efd|::1|name=name action=action/sdfef_efd|0 B|24 B||
+2021-08-06 10:44:03|0s|200|GET|/user/name/action/sdfef_efd/wefwef|::1|name=name action=action/sdfef_efd/wefwef|0 B|31 B||
+2021-08-06 10:47:28|0s|200|GET|/welcome|::1|0 B|12 B||
+2021-08-06 10:47:48|0s|404|GET|/welcome/lastname=lee|::1|0 B|9 B||
+2021-08-06 10:48:18|0s|200|GET|/welcome|::1|firstname=Jane lastname=Doe|0 B|14 B||
+2021-08-06 10:51:42|0s|200|GET|/welcome|::1|firstname=Jane lastname=Doe|0 B|14 B||
+2021-08-06 10:58:54|0s|404|GET|/form_pos|::1|0 B|9 B||
+2021-08-06 10:58:57|0s|404|GET|/form_post|::1|0 B|9 B||
+2021-08-06 11:00:39|0s|404|GET|/form_post|::1|0 B|9 B||
+2021-08-06 11:00:51|0s|404|GET|/form_post|::1|message=wse|0 B|9 B||
+2021-08-06 11:07:47|181.2µs|200|POST|/form_post|::1|0 B|75 B||
+2021-08-06 11:08:51|0s|404|GET|/books|::1|0 B|9 B||
+2021-08-06 11:17:48|102.2µs|200|POST|/form_post|::1|0 B|77 B||
+2021-08-06 12:41:31|0s|200|POST|/form_post|::1|0 B|77 B||
+2021-08-06 12:45:52|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal object into Go value of type []main.Person)|
+2021-08-06 12:47:57|0s|400|POST|/get_json|::1|0 B|64 B|error(invalid character 'j' looking for beginning of object key string)|
+2021-08-06 12:57:19|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 12:59:52|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 13:04:31|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 13:08:35|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 13:09:12|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 13:15:55|503.5µs|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal string into Go value of type []main.Person)|
+2021-08-06 13:16:49|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal object into Go value of type []main.Person)|
+2021-08-06 13:25:34|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal object into Go value of type []main.Person)|
+2021-08-06 13:26:11|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal object into Go value of type []main.Person)|
+2021-08-06 13:40:10|0s|400|POST|/get_json|::1|0 B|65 B|error(json: cannot unmarshal object into Go value of type []main.Person)|
+2021-08-06 13:44:08|508.4µs|200|POST|/get_json|::1|0 B|0 B||
+2021-08-06 13:46:04|599.4µs|200|POST|/get_json|::1|0 B|0 B||
+2021-08-06 13:58:53|918.3µs|200|POST|/get_json|::1|0 B|0 B||
